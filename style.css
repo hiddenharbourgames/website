@@ -1,6 +1,8 @@
 /* Hidden Harbour Games – Website */
 /* Skizzen-Basis: Markenfarben aus design/STAND.md (Farbwelt B) */
 @font-face { font-family: "Montserrat"; src: url(assets/montserrat.ttf) format('truetype'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Cinzel"; src: url(assets/cinzel.ttf) format('truetype'); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: "IM Fell English"; src: url(assets/imfell.ttf) format('truetype'); font-display: swap; }
 @font-face { font-family: "Lora"; src: url(assets/lora.ttf) format('truetype'); font-weight: 400 700; font-display: swap; }
 :root {
   --nachtblau: #14213D;
@@ -45,12 +47,17 @@ h2 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(28px, 3.4vw,
 .held p { color: var(--creme-70); font-size: 17px; line-height: 1.75; max-width: 44ch; margin-bottom: var(--s4); }
 .held .zeichen { width: 100%; max-width: 360px; justify-self: center; filter: drop-shadow(0 0 60px rgba(244,163,64,.18)); }
 /* 2 Games */
-.karte { border: 1px solid var(--linie); border-left: 3px solid var(--laterne); border-radius: var(--radius); padding: var(--s5) var(--s4); background: rgba(11,19,38,.5); display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s4); }
-.karte h3 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(36px, 4.4vw, 54px); letter-spacing: .01em; }
-.karte .bald { color: var(--laterne); font-weight: 700; letter-spacing: .2em; font-size: 13px; margin-top: var(--s1); }
-.plattformen { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1); justify-content: flex-end; }
-.plattformen li { border: 1px solid var(--linie); border-radius: var(--radius); padding: 8px 14px; font-size: 13px; font-weight: 600; letter-spacing: .06em; }
-.plattformen li span { color: var(--creme-70); font-weight: 400; }
+/* 2 Games: Bühne statt Kasten */
+.buehne { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--s5); padding: var(--s5) 0; }
+.buehne::before, .buehne::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(244,163,64,.55) 20%, rgba(244,163,64,.55) 80%, transparent); }
+.buehne::before { top: 0; } .buehne::after { bottom: 0; }
+.titel { font-family: "Cinzel", serif; font-weight: 600; font-size: clamp(44px, 7vw, 92px); line-height: 1; letter-spacing: .04em; text-shadow: 0 0 40px rgba(244,163,64,.22); }
+.plattformen { list-style: none; padding: 0; margin-top: var(--s4); display: flex; flex-wrap: wrap; gap: var(--s2); }
+.plattformen li { display: flex; align-items: center; min-height: 50px; gap: 10px; border: 1px solid rgba(244,233,214,.28); border-radius: var(--radius); padding: 12px 20px; background: rgba(11,19,38,.35); }
+.p-name { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.p-als { font-size: 13px; color: var(--creme-70); }
+.p-als strong { font-family: "Cinzel", serif; font-weight: 700; font-size: 17px; letter-spacing: .04em; color: var(--laterne); }
+.bald { font-family: "IM Fell English", serif; font-size: clamp(36px, 4.6vw, 60px); color: var(--laterne); line-height: 1; white-space: nowrap; text-shadow: 0 0 30px rgba(244,163,64,.3); }
 /* 3 Studio */
 .werte { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin-top: var(--s5); }
 .wert { border-top: 2px solid var(--laterne); padding-top: var(--s3); }
@@ -75,8 +82,8 @@ footer .innen { display: flex; justify-content: space-between; gap: var(--s2); }
   section, .held { padding: var(--s5) 0; }
   .held .innen { grid-template-columns: 1fr; gap: var(--s4); }
   .held .zeichen { order: -1; max-width: 140px; justify-self: start; }
-  .karte { flex-direction: column; align-items: flex-start; padding: var(--s4) var(--s3); }
-  .plattformen { justify-content: flex-start; }
+  .buehne { grid-template-columns: 1fr; gap: var(--s4); padding: var(--s4) 0; }
+  .bald { white-space: normal; }
   .werte, .person { grid-template-columns: 1fr; gap: var(--s3); }
   .text { font-size: 17px; }
   footer .innen { flex-direction: column; }
