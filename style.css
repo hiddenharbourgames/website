@@ -1,0 +1,93 @@
+/* Hidden Harbour Games – Website */
+/* Skizzen-Basis: Markenfarben aus design/STAND.md (Farbwelt B) */
+@font-face { font-family: "Montserrat"; src: url(assets/montserrat.ttf) format('truetype'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Lora"; src: url(assets/lora.ttf) format('truetype'); font-weight: 400 700; font-display: swap; }
+:root {
+  --nachtblau: #14213D;
+  --tiefblau: #0B1326;
+  --laterne: #F4A340;
+  --creme: #F4E9D6;
+  --creme-70: rgba(244, 233, 214, .72);
+  --linie: rgba(244, 233, 214, .14);
+  --radius: 6px;
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 104px;
+}
+* { box-sizing: border-box; margin: 0; }
+body { font-family: "Montserrat", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.kanaele { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); list-style: none; padding: 0; }
+.kanaele a { display: inline-block; padding: 10px 0; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; border-bottom: 1px solid transparent; }
+.kanaele a:hover, .kanaele a:focus-visible { border-bottom-color: var(--laterne); outline: none; }
+.fuss { font-size: 12px; letter-spacing: .04em; }
+.fuss a { text-decoration: underline; text-underline-offset: 3px; }
+
+
+html { scroll-behavior: smooth; }
+body { background: var(--nachtblau); color: var(--creme); }
+.innen { max-width: 1160px; margin: 0 auto; padding: 0 var(--s5); }
+.kopf { position: sticky; top: 0; z-index: 5; background: rgba(20,33,61,.94); border-bottom: 1px solid var(--linie); }
+.kopf .innen { display: flex; justify-content: space-between; align-items: center; padding-top: var(--s2); padding-bottom: var(--s2); }
+.kopf img { height: 42px; display: block; }
+.kopf .kanaele a { font-size: 12px; }
+section { padding: var(--s6) 0; border-bottom: 1px solid var(--linie); }
+.etikett { font-size: 12px; font-weight: 700; letter-spacing: .2em; color: var(--laterne); margin-bottom: var(--s2); text-transform: uppercase; }
+h2 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin-bottom: var(--s3); }
+.text { font-family: "Lora", serif; color: var(--creme-70); font-size: 18px; line-height: 1.75; max-width: 60ch; }
+.text + .text { margin-top: var(--s2); }
+.knopf { display: inline-block; background: var(--laterne); color: var(--tiefblau); font-weight: 700; font-size: 13px; letter-spacing: .14em; padding: 15px 26px; border-radius: var(--radius); text-transform: uppercase; }
+.knopf:focus-visible, .rand:focus-visible { outline: 2px solid var(--creme); outline-offset: 3px; }
+.rand { display: inline-block; border: 1px solid var(--laterne); color: var(--creme); font-weight: 600; font-size: 13px; letter-spacing: .14em; padding: 14px 22px; border-radius: var(--radius); text-transform: uppercase; }
+/* 1 Start */
+.held { padding: var(--s6) 0 var(--s6); }
+.held .innen { display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--s5); align-items: center; }
+.held h1 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(36px, 5vw, 62px); line-height: 1.08; margin-bottom: var(--s3); }
+.held h1 em { font-style: italic; color: var(--laterne); }
+.held p { color: var(--creme-70); font-size: 17px; line-height: 1.75; max-width: 44ch; margin-bottom: var(--s4); }
+.held .zeichen { width: 100%; max-width: 360px; justify-self: center; filter: drop-shadow(0 0 60px rgba(244,163,64,.18)); }
+/* 2 Games */
+.karte { border: 1px solid var(--linie); border-left: 3px solid var(--laterne); border-radius: var(--radius); padding: var(--s5) var(--s4); background: rgba(11,19,38,.5); display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s4); }
+.karte h3 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(36px, 4.4vw, 54px); letter-spacing: .01em; }
+.karte .bald { color: var(--laterne); font-weight: 700; letter-spacing: .2em; font-size: 13px; margin-top: var(--s1); }
+.plattformen { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1); justify-content: flex-end; }
+.plattformen li { border: 1px solid var(--linie); border-radius: var(--radius); padding: 8px 14px; font-size: 13px; font-weight: 600; letter-spacing: .06em; }
+.plattformen li span { color: var(--creme-70); font-weight: 400; }
+/* 3 Studio */
+.werte { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin-top: var(--s5); }
+.wert { border-top: 2px solid var(--laterne); padding-top: var(--s3); }
+.wert h3 { font-size: 15px; font-weight: 700; letter-spacing: .06em; margin-bottom: var(--s1); }
+.wert p { font-family: "Lora", serif; color: var(--creme-70); font-size: 16px; line-height: 1.65; }
+/* 4 About */
+.person { display: grid; grid-template-columns: 220px 1fr; gap: var(--s5); }
+.person .name { font-family: "Lora", serif; font-size: 30px; }
+.person .rolle { color: var(--laterne); font-size: 12px; font-weight: 700; letter-spacing: .18em; margin-top: var(--s1); text-transform: uppercase; }
+/* 5 Journey + 6 Contact */
+.knoepfe { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s4); }
+.mail { font-size: clamp(16px, 2vw, 20px); letter-spacing: .02em; text-transform: none; }
+.tief { background: var(--tiefblau); }
+footer { padding: var(--s4) 0; color: var(--creme-70); }
+footer .innen { display: flex; justify-content: space-between; gap: var(--s2); }
+@media (max-width: 760px) {
+  .innen { padding: 0 var(--s3); }
+  .kopf .innen { flex-direction: column; align-items: flex-start; gap: var(--s1); }
+  .kopf img { height: 34px; }
+  .kopf .kanaele { gap: 0 var(--s3); }
+  section, .held { padding: var(--s5) 0; }
+  .held .innen { grid-template-columns: 1fr; gap: var(--s4); }
+  .held .zeichen { order: -1; max-width: 140px; justify-self: start; }
+  .karte { flex-direction: column; align-items: flex-start; padding: var(--s4) var(--s3); }
+  .plattformen { justify-content: flex-start; }
+  .werte, .person { grid-template-columns: 1fr; gap: var(--s3); }
+  .text { font-size: 17px; }
+  footer .innen { flex-direction: column; }
+}
+
+/* Rechtsseiten */
+.recht { padding: var(--s5) 0 var(--s6); }
+.recht h1 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(30px, 4vw, 44px); margin-bottom: var(--s4); }
+.recht h2 { font-size: 20px; margin: var(--s4) 0 var(--s2); }
+.recht h3 { font-size: 16px; font-weight: 700; margin: var(--s3) 0 var(--s1); }
+.recht p, .recht li { font-family: "Lora", serif; color: var(--creme-70); font-size: 16px; line-height: 1.7; max-width: 72ch; }
+.recht p + p { margin-top: var(--s2); }
+.recht ul { padding-left: 1.2em; margin: var(--s1) 0; }
+.recht a { color: var(--laterne); text-decoration: underline; text-underline-offset: 3px; }
+.zurueck { display: inline-block; margin-bottom: var(--s4); color: var(--laterne); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
