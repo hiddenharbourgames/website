@@ -27,7 +27,9 @@ a { color: inherit; text-decoration: none; }
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 body { background: var(--nachtblau); color: var(--creme); }
 .innen { max-width: 1160px; margin: 0 auto; padding: 0 var(--s5); }
-.kopf { position: sticky; top: 0; z-index: 5; background: rgba(20,33,61,.94); border-bottom: 1px solid var(--linie); }
+.kopf { position: sticky; top: 0; z-index: 5; background: var(--nachtblau); border-bottom: 1px solid var(--linie); padding-top: env(safe-area-inset-top); box-shadow: 0 10px 30px rgba(6,10,20,.35); }
+/* deckt alles über der Leiste ab (z. B. hinter der durchsichtigen Safari-Adressleiste) */
+.kopf::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 100vh; background: var(--nachtblau); }
 .kopf .innen { display: flex; justify-content: space-between; align-items: center; padding-top: var(--s2); padding-bottom: var(--s2); }
 .kopf img { height: 42px; display: block; }
 .kopf .kanaele a { font-size: 12px; }
