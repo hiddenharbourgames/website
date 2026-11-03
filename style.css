@@ -22,7 +22,7 @@ a { color: inherit; text-decoration: none; }
 .fuss a { text-decoration: underline; text-underline-offset: 3px; }
 
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 body { background: var(--nachtblau); color: var(--creme); }
 .innen { max-width: 1160px; margin: 0 auto; padding: 0 var(--s5); }
 .kopf { position: sticky; top: 0; z-index: 5; background: rgba(20,33,61,.94); border-bottom: 1px solid var(--linie); }
@@ -62,11 +62,12 @@ h2 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(28px, 3.4vw,
 .person .rolle { color: var(--laterne); font-size: 12px; font-weight: 700; letter-spacing: .18em; margin-top: var(--s1); text-transform: uppercase; }
 /* 5 Journey + 6 Contact */
 .knoepfe { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s4); }
-.mail { font-size: clamp(16px, 2vw, 20px); letter-spacing: .02em; text-transform: none; }
+.mail { font-size: clamp(16px, 2vw, 20px); letter-spacing: .02em; text-transform: none; max-width: 100%; overflow-wrap: anywhere; }
 .tief { background: var(--tiefblau); }
 footer { padding: var(--s4) 0; color: var(--creme-70); }
 footer .innen { display: flex; justify-content: space-between; gap: var(--s2); }
 @media (max-width: 760px) {
+  html { scroll-padding-top: 136px; }
   .innen { padding: 0 var(--s3); }
   .kopf .innen { flex-direction: column; align-items: flex-start; gap: var(--s1); }
   .kopf img { height: 34px; }
@@ -83,7 +84,7 @@ footer .innen { display: flex; justify-content: space-between; gap: var(--s2); }
 
 /* Rechtsseiten */
 .recht { padding: var(--s5) 0 var(--s6); }
-.recht h1 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(30px, 4vw, 44px); margin-bottom: var(--s4); }
+.recht h1 { font-family: "Lora", serif; font-weight: 500; font-size: clamp(30px, 4vw, 44px); margin-bottom: var(--s4); hyphens: auto; overflow-wrap: anywhere; }
 .recht h2 { font-size: 20px; margin: var(--s4) 0 var(--s2); }
 .recht h3 { font-size: 16px; font-weight: 700; margin: var(--s3) 0 var(--s1); }
 .recht p, .recht li { font-family: "Lora", serif; color: var(--creme-70); font-size: 16px; line-height: 1.7; max-width: 72ch; }
