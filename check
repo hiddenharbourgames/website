@@ -2,7 +2,8 @@
 """Vor dem Livegang: keine Platzhalter, keine toten lokalen Verweise oder Sprungziele, CNAME stimmt."""
 import pathlib, re, sys
 from html.parser import HTMLParser
-from urllib.parse import urlsplit
+import posixpath
+from urllib.parse import unquote, urlsplit
 
 root = pathlib.Path(__file__).parent
 
@@ -20,11 +21,13 @@ class Page(HTMLParser):
                 self.ids.add(v)
 
 
-pages = {}
-for f in root.glob("*.html"):
+def parse(rel):
     p = Page()
-    p.feed(f.read_text())
-    pages[f.name] = (p, f.read_text())
+    p.feed((root / rel).read_text())
+    return p
+
+
+pages = {f.name: (parse(f.name), f.read_text()) for f in root.glob("*.html")}
 
 fails = []
 for name, (p, text) in pages.items():
@@ -34,11 +37,12 @@ for name, (p, text) in pages.items():
         u = urlsplit(ref.strip())
         if u.scheme or u.netloc:
             continue
-        target = u.path or name
+        target = posixpath.normpath(unquote(u.path)) if u.path else name
+        frag = unquote(u.fragment)
         if not (root / target).exists():
             fails.append(f"{name}: fehlt {target}")
-        elif u.fragment and target.endswith(".html") and u.fragment not in pages[target][0].ids:
-            fails.append(f"{name}: Sprungziel #{u.fragment} fehlt in {target}")
+        elif frag and target.endswith(".html") and frag not in (pages[target][0] if target in pages else parse(target)).ids:
+            fails.append(f"{name}: Sprungziel #{frag} fehlt in {target}")
         elif ref.strip() == "#":
             fails.append(f"{name}: leerer Link #")
 for ref in re.findall(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)", (root / "style.css").read_text()):
